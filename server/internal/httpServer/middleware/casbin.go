@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func (middlewareStruct) Casbin(e *casbin.SyncedCachedEnforcer) gin.HandlerFunc {
+func (m *middlewareStruct) Casbin(e *casbin.SyncedCachedEnforcer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		user := c.GetHeader("X-User-ID")
 		if user == "" {

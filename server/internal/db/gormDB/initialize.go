@@ -1,7 +1,7 @@
 package gormDB
 
 import (
-	"example/templalte/internal/configs"
+	"example/template/internal/configs"
 	"fmt"
 	"github.com/google/uuid"
 	"gorm.io/driver/mysql"

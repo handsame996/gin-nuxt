@@ -1,4 +1,4 @@
-package utils
+package casbinEnf
 
 import (
 	"github.com/casbin/casbin/v2"

@@ -1,7 +1,11 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"go.uber.org/zap"
+	"gorm.io/gorm"
+)
 
 type Global struct {
 	DB *gorm.DB
+	Logger *zap.Logger
 }

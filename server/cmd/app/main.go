@@ -1,10 +1,10 @@
 package main
 
 import (
-	"example/templalte/internal/configs"
-	"example/templalte/internal/db/gormDB"
-	"example/templalte/internal/httpServer/initHttp"
-	"example/templalte/internal/models"
+	"example/template/internal/configs"
+	"example/template/internal/db/gormDB"
+	"example/template/internal/httpServer/initHttp"
+	"example/template/internal/models"
 )
 
 func main() {
@@ -13,6 +13,7 @@ func main() {
 
 	var g models.Global
 	g.DB = gormDB.InitializeGorm(c.Mysql)
+	g.Logger = configs.InitZap(c.Zap)
 
 	initHttp.InitHttpServer(&g, c.Http)
 }

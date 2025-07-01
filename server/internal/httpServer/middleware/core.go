@@ -5,10 +5,10 @@ import (
 	"net/http"
 )
 
-type middlewareStruct struct{}
+
 
 // Cors 直接放行所有跨域请求并放行所有 OPTIONS 方法
-func (middlewareStruct) Cors() gin.HandlerFunc {
+func (m *middlewareStruct) Cors() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		method := c.Request.Method
 		origin := c.Request.Header.Get("Origin")
