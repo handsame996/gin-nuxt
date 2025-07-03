@@ -12,17 +12,20 @@ import (
 	"time"
 )
 
-func InitHttpServer(g *models.Global, param configs.Http) {
+func Server(g models.GlobalInter, param configs.Http) {
 	r := gin.New()
 	r.Use(gin.Recovery())
 
 	m := middleware.NewMiddlewareStruct()
-	r.Use(m.Cors(), m.AddGlobalContext(g), m.Logger(g.Logger))
-
+	r.Use(m.Cors(), m.Logger(g.GetLogger()))
+	r.POST("ping", func(context *gin.Context) {
+		context.JSON(http.StatusOK, "pong")
+	})
 	publicRouter := r.Group("")
 	privateRouter := r.Group("")
+
 	privateRouter.Use(m.Casbin(casbinEnf.GetCasbin()))
-	router.InitRouter(publicRouter, privateRouter)
+	router.InitRouter(publicRouter, privateRouter, g)
 
 	s := &http.Server{
 		Addr:           param.Port,

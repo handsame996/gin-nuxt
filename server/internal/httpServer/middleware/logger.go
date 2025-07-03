@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-
 // LogLayout 日志layout
 type LogLayout struct {
 	Time      time.Time
@@ -23,7 +22,7 @@ type LogLayout struct {
 	Source    string                 // 来源
 }
 
-func (m *middlewareStruct)Logger(l *zap.Logger) gin.HandlerFunc {
+func (m *middlewareStruct) Logger(l *zap.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()
 		path := c.Request.URL.Path
@@ -40,6 +39,6 @@ func (m *middlewareStruct)Logger(l *zap.Logger) gin.HandlerFunc {
 			Cost:      cost,
 		}
 		v, _ := json.Marshal(layout)
-		l.Debug(string(v))
+		l.Info(string(v))
 	}
 }

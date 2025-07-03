@@ -16,7 +16,7 @@ var (
 func GetCasbin() *casbin.SyncedCachedEnforcer {
 	once.Do(func() {
 		// 创建Casbin执行器
-		a, err := gormadapter.NewAdapter("mysql", "root:123456@tcp(127.0.0.1:3306)/", true)
+		a, err := gormadapter.NewAdapter("mysql", "root:123123@tcp(127.0.0.1:3306)/gin-nuxt", true)
 		if err != nil {
 			log.Fatalf("初始化适配器失败: %v", err)
 		}

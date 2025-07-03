@@ -11,9 +11,7 @@ func main() {
 	var c configs.ConfigModel
 	configs.InitializeViper(&c)
 
-	var g models.Global
-	g.DB = gormDB.InitializeGorm(c.Mysql)
-	g.Logger = configs.InitZap(c.Zap)
+	g := models.CreateGlobal(gormDB.InitializeGorm(c.Mysql), configs.InitZap(c.Zap))
 
-	initHttp.InitHttpServer(&g, c.Http)
+	initHttp.Server(g, c.Http)
 }
