@@ -1,0 +1,20 @@
+@import "./variables.less";
+
+// 覆盖 Ant Design Vue 核心变量
+@primary-color: @project-primary-color; // 全局主色（默认蓝色，可改为其他色值如 #3F87F5）
+@link-color: #dabc3a; // 链接色
+@success-color: @project-success-color; // 成功色
+@warning-color: @project-warning-color; // 警告色
+@error-color: @project-danger-color; // 错误色
+@font-size-base: 14px; // 主字号
+@heading-color: rgba(0, 0, 0, 0.85); // 标题色
+@text-color: rgba(0, 0, 0, 0.65); // 文本色
+@text-color-secondary: rgba(0, 0, 0, 0.45); // 次要文本色
+@border-radius-base: 4px; // 组件边框圆角
+@border-color-base: #d9d9d9; // 边框色
+@bg-color: @project-bg-color; // 背景色
+@bg-color-secondary: #f0f2f5; // 次要背景色
+
+// 还可以覆盖具体组件的变量（如按钮、输入框等）
+@btn-font-weight: 500; // 按钮字体权重
+@input-height-base: 36px; // 输入框高度

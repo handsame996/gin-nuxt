@@ -1,19 +1,20 @@
+<!-- pages/index.vue -->
 <template>
-    <h1>首页</h1>
-    1111
-    <a-space wrap>
+  <div>
+     <a-space wrap>
     <a-button type="primary">Primary Button</a-button>
     <a-button>Default Button</a-button>
     <a-button type="dashed">Dashed Button</a-button>
     <a-button type="text">Text Button</a-button>
     <a-button type="link">Link Button</a-button>
   </a-space>
+    <h1>主题切换示例</h1>
+    <a-button class="btn-primary" @click="toggleTheme">
+      {{ isDark ? '切换到浅色' : '切换到深色' }}
+    </a-button>
+  </div>
 </template>
 
-<script setup lang="ts">
-import { useNuxtApp } from '#app'
-
-const { vueApp } = useNuxtApp()
-console.log('已注册组件:', Object.keys(vueApp._context.components))
-
+<script setup>
+const { isDark, toggleTheme } = useTheme()
 </script>

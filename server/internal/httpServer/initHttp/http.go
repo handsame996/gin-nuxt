@@ -21,6 +21,7 @@ func Server(g models.GlobalInter, param configs.Http) {
 	r.POST("ping", func(context *gin.Context) {
 		context.JSON(http.StatusOK, "pong")
 	})
+
 	publicRouter := r.Group("")
 	privateRouter := r.Group("")
 

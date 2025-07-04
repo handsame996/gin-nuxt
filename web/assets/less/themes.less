@@ -1,0 +1,43 @@
+@import "./variables.less";
+
+.theme-light() {
+  --primary-color: @project-primary-color;
+  --primary-light: @project-primary-light;
+  --primary-dark: @project-primary-dark;
+  --bg-color: @project-bg-color;
+  --text-primary: @project-text-primary;
+  --success-color: @project-success-color;
+  --warning-color: @project-warning-color;
+  --danger-color: @project-danger-color;
+  --text-secondary: @project-text-secondary;
+  --border-color: @project-border-color;
+}
+
+.theme-dark() {
+  --primary-color: @project-primary-dark-color;
+  --primary-light: @project-primary-dark-light;
+  --primary-dark: @project-primary-dark-dark; 
+  --bg-color: @project-bg-dark-color;
+  --text-primary: @project-text-dark-primary; 
+  --success-color: lighten(@project-success-color, 15%);
+  --warning-color: lighten(@project-warning-color, 15%);
+  --danger-color: lighten(@project-danger-color, 15%);
+  --text-secondary: lighten(@project-text-secondary, 40%);
+  --border-color: darken(@project-border-color, 50%);
+}
+
+// 初始化默认主题
+:root {
+  .theme-light();
+}
+
+// 深色模式类（添加过渡动画提升体验）
+.dark-theme {
+  .theme-dark();
+  transition: all 0.3s ease;
+}
+
+// 全局过渡动画
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

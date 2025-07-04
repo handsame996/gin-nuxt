@@ -1,0 +1,15 @@
+// 导入变量
+@import "./themes.less";
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease; // 主题切换动画
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+}
