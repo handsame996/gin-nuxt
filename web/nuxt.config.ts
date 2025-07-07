@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
    modules: [
-    '@ant-design-vue/nuxt','@pinia/nuxt'
+    '@ant-design-vue/nuxt','@pinia/nuxt','@nuxtjs/i18n'
   ],
   antd:{},
   plugins:[],
@@ -58,8 +58,38 @@ export default defineNuxtConfig({
       }
     }
   },
+  i18n:{
+    // 配置默认语言
+    defaultLocale: 'zh',
+    
+    // 支持的语言列表
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en.ts' // 对应语言文件
+      },
+      {
+        code: 'zh',
+        name: '中文',
+        file: 'zh.ts'
+      }
+    ],
+    
+    // 语言文件存放路径
+    langDir: './',
+    
+    // 启用路由国际化
+    strategy: 'prefix_except_default',
+    
+    // 允许在URL中自动检测语言
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'nuxt-i18n',
+      redirectOn: 'root'
+    }
+  },
   build: {
     transpile: ['ant-design-vue'],
-   
   }
 })
