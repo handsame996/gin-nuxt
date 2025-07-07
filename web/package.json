@@ -12,9 +12,11 @@
   "dependencies": {
     "@ant-design-vue/nuxt": "1.4.6",
     "@pinia/nuxt": "^0.11.1",
+    "@tailwindcss/vite": "^4.1.11",
     "ant-design-vue": ">=4",
     "nuxt": "^3.17.6",
     "pinia": "^3.0.3",
+    "tailwindcss": "^4.1.11",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },

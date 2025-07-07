@@ -1,16 +1,13 @@
 <!-- pages/index.vue -->
 <template>
   <div>
-    <h1 class="font-serif text-3xl underline underline-offset-1">
-    敏捷的棕色狐狸跳过了懒惰的狗
-  </h1>
-     <a-space wrap>
+    <a-space wrap>
     <a-button type="primary">Primary Button</a-button>
     <a-button>Default Button</a-button>
     <a-button type="dashed">Dashed Button</a-button>
     <a-button type="text">Text Button</a-button>
     <a-button type="link">Link Button</a-button>
-  </a-space>
+    </a-space>
     <h1>主题切换示例</h1>
     <a-button class="btn-primary" @click="toggleTheme">
       {{ isDark ? '切换到浅色' : '切换到深色' }}

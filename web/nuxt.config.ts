@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import path from 'path'
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   ssr: false,
@@ -21,7 +22,8 @@ export default defineNuxtConfig({
   antd:{},
   plugins:[],
   css: [
-    '@/assets/less/main.less'
+    '@/assets/less/main.less',
+    "@/assets/css/main.css"
   ],
   router: {
    options:{
@@ -43,6 +45,9 @@ export default defineNuxtConfig({
         }
       }
     },
+    plugins: [
+      tailwindcss(),
+      ],
     server:{
       proxy:{
         '/api':{
