@@ -34,3 +34,24 @@ func (u *UserHandler) CreateUser(c *gin.Context) {
 	}
 	responses.OkWithMessage("创建成功", c)
 }
+
+func (u *UserHandler) Login(c *gin.Context) {
+	var user systemModel.User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		responses.FailWithMessage(err.Error(), c)
+		return
+	}
+
+	if token, err := u.service.Login(c, user); err != nil {
+		u.logger.Error("登入失败!", zap.Error(err))
+		responses.FailWithMessage("登入失败", c)
+		return
+	} else {
+		if token != "" {
+			responses.OkWithDetailed(map[string]string{"token": token}, "登入成功！", c)
+			return
+		}
+		responses.Result(responses.SUCCESS, "", "账号密码错误！", c)
+		return
+	}
+}

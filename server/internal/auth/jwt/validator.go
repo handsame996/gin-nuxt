@@ -27,7 +27,8 @@ func (j *JWT) ParseToken(tokenString string) (interface{}, error) {
 			}
 		}
 	} else if claims, ok := token.Claims.(*CustomClaims); ok {
-		fmt.Println(claims.Username, claims.RegisteredClaims.Issuer)
+		fmt.Println(claims.UserId, claims.RegisteredClaims.Issuer)
+		return claims.UserId, err
 	} else {
 		log.Fatal("unknown claims type, cannot proceed")
 	}

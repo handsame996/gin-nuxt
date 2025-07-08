@@ -1,6 +1,7 @@
 package models
 
 import (
+	"example/template/internal/auth/jwt"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"time"
@@ -17,17 +18,20 @@ type GeneralModel struct {
 type global struct {
 	db     *gorm.DB
 	logger *zap.Logger
+	jwt    jwt.JWTInterface
 }
 
 type GlobalInter interface {
 	GetGormDB() *gorm.DB
 	GetLogger() *zap.Logger
+	GetJWTInterface() jwt.JWTInterface
 }
 
-func CreateGlobal(db *gorm.DB, logger *zap.Logger) GlobalInter {
+func CreateGlobal(db *gorm.DB, logger *zap.Logger, jwt jwt.JWTInterface) GlobalInter {
 	return &global{
 		db:     db,
 		logger: logger,
+		jwt:    jwt,
 	}
 }
 
@@ -37,4 +41,8 @@ func (g *global) GetGormDB() *gorm.DB {
 
 func (g *global) GetLogger() *zap.Logger {
 	return g.logger
+}
+
+func (g *global) GetJWTInterface() jwt.JWTInterface {
+	return g.jwt
 }

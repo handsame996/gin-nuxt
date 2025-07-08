@@ -1,7 +1,6 @@
 package initHttp
 
 import (
-	"example/template/internal/auth/casbinEnf"
 	"example/template/internal/configs"
 	"example/template/internal/httpServer/middleware"
 	"example/template/internal/httpServer/router"
@@ -25,9 +24,12 @@ func Server(g models.GlobalInter, param configs.Http) {
 	publicRouter := r.Group("")
 	privateRouter := r.Group("")
 
-	privateRouter.Use(m.Casbin(casbinEnf.GetCasbin()))
+	//privateRouter.Use(m.Casbin(casbinEnf.GetCasbin()))
+	privateRouter.Use(m.Jwt(g.GetJWTInterface()))
 	router.InitRouter(publicRouter, privateRouter, g)
-
+	privateRouter.POST("ping1", func(context *gin.Context) {
+		context.JSON(http.StatusOK, "pong")
+	})
 	s := &http.Server{
 		Addr:           param.Port,
 		Handler:        r,

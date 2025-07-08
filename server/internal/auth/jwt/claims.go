@@ -3,6 +3,7 @@ package jwt
 import (
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
+	"time"
 )
 
 var (
@@ -15,8 +16,7 @@ var (
 )
 
 type JwtPayLoad struct {
-	Username string `json:"username"`
-	PassWord string `json:"password"`
+	UserId int
 }
 type CustomClaims struct {
 	JwtPayLoad
@@ -24,5 +24,13 @@ type CustomClaims struct {
 }
 
 type JWT struct {
-	Signed []byte
+	Signed       []byte
+	EP           time.Duration
+	NP           time.Duration
+	CustomClaims CustomClaims
+}
+
+type JWTInterface interface {
+	CreateToken(user int) (t string, err error)
+	ParseToken(tokenString string) (interface{}, error)
 }

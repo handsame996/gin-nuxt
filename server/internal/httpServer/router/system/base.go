@@ -21,7 +21,7 @@ func NewUser(g models.GlobalInter) *User {
 func (u *User) InitApiRouter(publicRouter *gin.RouterGroup, privateRouter *gin.RouterGroup) {
 	// 依赖注入
 	repository := systemRepository.NewUserRepository(u.g.GetGormDB())
-	service := systemService.NewUserService(repository)
+	service := systemService.NewUserService(repository, u.g.GetJWTInterface())
 	var handler = systemHandle.NewUserHandler(service, u.g.GetLogger())
 	// 设置router group
 	apiPublicRouter := publicRouter.Group("base")
@@ -31,7 +31,7 @@ func (u *User) InitApiRouter(publicRouter *gin.RouterGroup, privateRouter *gin.R
 		apiPrivateRouter.POST("/createUser", handler.CreateUser)
 	}
 	{
-		apiPublicRouter.POST("/login")
+		apiPublicRouter.POST("/login", handler.Login)
 
 	}
 }

@@ -17,3 +17,19 @@ func (repository *UserRepository) CreateUserInfo(ctx context.Context, user *syst
 	err = repository.db.WithContext(ctx).Model(&systemModel.User{}).Create(user).Error
 	return
 }
+
+func (repository *UserRepository) GetUserInfoByUserName(ctx context.Context, user *systemModel.User) (userInfo systemModel.User, err error) {
+	err = repository.db.WithContext(ctx).Where("user_name = ?", user.UserName).First(&userInfo).Error
+	return
+	//if err != nil {
+	//	return false, err
+	//}
+	//password, err := utils.VerifyPassword(user.Password, userInfo.Salt)
+	//if err != nil {
+	//	return false, err
+	//}
+	//if password != userInfo.Password {
+	//	return false, nil
+	//}
+	//return true, nil
+}

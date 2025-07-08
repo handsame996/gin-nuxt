@@ -2,7 +2,7 @@
 jwt:
   signing-key: gin-nuxt
   expires-time: 7d
-  buffer-time: 1d
+  buffer-time: 0
   issuer: dadaguai
 # zap logger configuration
 zap:

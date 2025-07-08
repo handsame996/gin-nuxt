@@ -15,7 +15,7 @@
                     <a-input class="form__input" type="text" placeholder="Name" />
                     <a-input class="form__input" type="text" placeholder="Email"/>
                     <a-input class="form__input" type="password" placeholder="Password" />
-                    <a-button class="form__button button submit">SIGN UP</a-button>
+                    <a-button class="form__button button submit">{{$t('register')}} </a-button>
                 </a-form>
             </div>
             <div :class="['container','b-container', {'is-txl': isHidden, 'is-z200': isHidden }]" id="b-container">
@@ -30,7 +30,7 @@
                     <a-input class="form__input" type="text" placeholder="Email" />
                     <a-input class="form__input" type="password" placeholder="Password" />
                     <a class="form__link">Forgot your password?</a>
-                    <a-button class="form__button button submit">SIGN IN</a-button>
+                    <a-button class="form__button button submit">{{$t('login')}}</a-button>
                 </a-form>
             </div>
             <div :class="['switch',{ 'is-txr': isTxr, 'is-gx': isGx }]"  id="switch-cnt" >
@@ -39,12 +39,12 @@
                 <div :class="['switch__container',{ 'is-hidden': isHidden }]" id="switch-c1">
                     <h2 class="switch__title title">{{$t('welcome')}}</h2>
                     <p class="switch__description description">To keep connected with us please login with your personal info</p>
-                    <a-button class="switch__button button switch-btn" @click="changeForm">SIGN IN</a-button>
+                    <a-button class="switch__button button switch-btn" @click="changeForm">{{$t('login')}}</a-button>
                 </div>
                 <div :class="['switch__container',{ 'is-hidden': !isHidden }]" id="switch-c2">
                     <h2 class="switch__title title">Hello Friend !</h2>
                     <p class="switch__description description">Enter your personal details and start journey with us</p>
-                    <a-button class="switch__button button switch-btn" @click="changeForm">SIGN UP</a-button>
+                    <a-button class="switch__button button switch-btn" @click="changeForm">{{$t('register')}}</a-button>
                 </div>
             </div>
         </div>

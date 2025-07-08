@@ -1,9 +1,11 @@
 package middleware
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"io"
 	"strings"
 	"time"
 )
@@ -28,11 +30,20 @@ func (m *middlewareStruct) Logger(l *zap.Logger) gin.HandlerFunc {
 		path := c.Request.URL.Path
 		query := c.Request.URL.RawQuery
 		cost := time.Since(start)
+		// 读取并保存Body内容
+		var bodyBytes []byte
+		if c.Request.Body != nil {
+			// 读取Body
+			bodyBytes, _ = io.ReadAll(c.Request.Body)
+			// 重新创建一个可读的Body
+			c.Request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
+		}
 		c.Next()
 		layout := LogLayout{
 			Time:      time.Now(),
 			Path:      path,
 			Query:     query,
+			Body:      string(bodyBytes),
 			IP:        c.ClientIP(),
 			UserAgent: c.Request.UserAgent(),
 			Error:     strings.TrimRight(c.Errors.ByType(gin.ErrorTypePrivate).String(), "\n"),
