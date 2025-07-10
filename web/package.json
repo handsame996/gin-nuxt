@@ -24,6 +24,7 @@
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.2.2",
     "less": "^4.3.0",
-    "less-loader": "^12.3.0"
+    "less-loader": "^12.3.0",
+    "vue-tsc": "^3.0.1"
   }
 }

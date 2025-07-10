@@ -30,7 +30,7 @@
                     <a-input class="form__input" type="text" placeholder="username" />
                     <a-input class="form__input" type="password" placeholder="Password" />
                     <a class="form__link">Forgot your password?</a>
-                    <a-button class="form__button button submit" @click="login">{{$t('login')}}</a-button>
+                    <a-button class="form__button button submit">{{$t('login')}}</a-button>
                 </a-form>
             </div>
             <div :class="['switch',{ 'is-txr': isTxr, 'is-gx': isGx }]"  id="switch-cnt" >
@@ -73,14 +73,14 @@ const changeForm = (e: Event) => {
   // 切换状态
   isTxr.value = !isTxr.value;
   isHidden.value = !isHidden.value;
+  console.log(11111);
+  
 };
 
 // 阻止表单默认提交行为
 const handleSubmit = (e: Event) => {
   e.preventDefault();
 };
-
-const login = async() => {}
 
 // 暴露handleSubmit方法供父组件使用
 defineExpose({
