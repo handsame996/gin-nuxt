@@ -5,10 +5,19 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   ssr: false,
   alias:{
-    '@': path.resolve(__dirname, './'),
+    '@': process.cwd(),
+    '~': process.cwd(),
   },
   typescript: {
-    typeCheck: true
+    typeCheck: true,
+    tsConfig: {
+      include: ['types/**/*.d.ts', 'types/**/*.ts']
+    }
+  },
+  imports:{
+    dirs:[
+      'composables/api'
+    ]
   },
   runtimeConfig: {
     public: {
@@ -51,7 +60,6 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
       ],
-      
     server:{
       proxy:{
         '/api':{

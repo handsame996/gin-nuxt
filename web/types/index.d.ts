@@ -8,8 +8,8 @@ declare module '*.vue' {
 }
 
 // 扩展 Nuxt 的 useFetch 返回类型
-declare module '#app' {
-  interface NuxtApp {
-    $apiFetch<T>(params: ApiParams): Promise<resType<T>>;
-  }
-}
+// declare module '#app' {
+//   interface NuxtApp {
+//     $apiFetch<T>(params: ApiParams): Promise<resType<T>>;
+//   }
+// }

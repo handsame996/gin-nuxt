@@ -1,10 +1,11 @@
-export enum ApiMethod {
-  POST = "post",
-  GET = "get",
-  DELETE = "delete",
-  PUT = "put",
-  PATCH = "patch"
-}
+// export enum ApiMethod {
+//   POST = "post",
+//   GET = "get",
+//   DELETE = "delete",
+//   PUT = "put",
+//   PATCH = "patch"
+// }
+export type ApiMethod = "post" | "get" | "delete" | "put" | "patch"
 
 export type HttpHeaders = {
   [key: string]: string;
