@@ -1,11 +1,13 @@
 <!-- components/LanguageSwitcher.vue -->
 <template>
   <div class="language-switcher">
-    <select v-model="currentLocale" @change="switchLocale">
-      <option v-for="locale in availableLocales" :key="locale.code" :value="locale.code">
-        {{ locale.name }}
-      </option>
-    </select>
+     <a-select
+      ref="select"
+      v-model:value="currentLocale"
+      @change="switchLocale"
+    >
+      <a-select-option v-for="locale in availableLocales" :key="locale.code" :value="locale.code">{{ locale.name }}</a-select-option>
+    </a-select>
   </div>
 </template>
 
@@ -14,6 +16,7 @@ import { useI18n } from 'vue-i18n'
 import { useNuxtApp } from '#app'
 import type {Locale} from "~/types/language"
 import {supportedLocales} from "~/types/language"
+import type { DefaultOptionType,SelectValue } from 'ant-design-vue/es/select'
 
 const { locale, locales } = useI18n()
 const nuxtApp = useNuxtApp()
@@ -34,15 +37,15 @@ const availableLocales = computed(() => {
 })
 
 // 切换语言
-const switchLocale = async (e:Event) => {
-  const newLocale = (e.target as HTMLSelectElement).value
+const switchLocale = async (value: SelectValue, option: DefaultOptionType) => {
+  const newLocale = value
   
   try {
     // 更新路由前缀（如果启用了路由前缀策略）
     await nuxtApp.$i18n.setLocale(newLocale as Locale)
     
     // 保存语言偏好到 cookie
-    useCookie('i18n_redirected').value = newLocale
+    useCookie('i18n_redirected').value = newLocale as string
     
     console.log(`已切换到 ${newLocale} 语言`)
   } catch (error) {

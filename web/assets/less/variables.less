@@ -1,24 +1,67 @@
-// 主色调
-@project-primary-color: #409EFF;
-@project-primary-light: lighten(@project-primary-color, 15%);
-@project-primary-dark: darken(@project-primary-color, 10%);
+// ==============================
+// 1. 主色调（紫色系）- 优化后更现代的数字产品调性
+// ==============================
+@project-primary-color: #8b5cf6;    // 主色（调整为更标准的600紫色，保留活力但更专业）
+@project-primary-light: #a78bfa;    // 浅版（提升亮度10%，hover反馈更明显）
+@project-primary-lighter: #c4b5fd;  // 超浅版（增加暖调，减轻视觉疲劳）
+@project-primary-dark: #7c3aed;     // 深版（增加饱和度，active状态更突出）
+@project-primary-darker: #6d28d9;   // 超深版（与主色形成完美梯度）
 
-// 功能色
-@project-success-color: #52C41A;
-@project-warning-color: #FAAD14;
-@project-danger-color: #F5222D;
+// ==============================
+// 2. 功能色 - 优化对比度与和谐度
+// ==============================
+// 成功色（调整为更中性的绿，避免与紫色冲突）
+@project-success-color: #22c55e;     // 主色（降低饱和度，更现代）
+@project-success-light: #4ade80;    // 浅版（保持明亮但不过曝）
+@project-success-dark: #16a34a;     // 深版（增加深度）
 
-// 中性色
-@project-text-primary: #333333;
-@project-text-secondary: #666666;
-@project-bg-color: #F5F7FA;
-@project-border-color: #E5E7EB;
+// 警告色（保持警示性但更柔和）
+@project-warning-color: #facc15;     // 主色（从橙色改为金黄色，减少视觉侵略性）
+@project-warning-light: #fde047;    // 浅版（保持高可见性）
+@project-warning-dark: #eab308;     // 深版（增加厚重感）
 
-// 深色主题专用变量 - 确保这些变量都已正确定义
-@project-primary-dark-color: #6383E2;
-@project-primary-dark-light: lighten(@project-primary-dark-color, 15%);
-@project-primary-dark-dark: darken(@project-primary-dark-color, 10%);
-@project-bg-dark-color: #1E293B; // 关键：添加这个变量定义
-@project-text-dark-primary: #E2E8F0; // 深色主题文本主色
+// 危险色（优化红色调，避免刺眼）
+@project-danger-color: #ef4444;      // 保留（已是最佳实践红色）
+@project-danger-light: #fca5a5;      // 浅版（增加粉调，减轻压迫感）
+@project-danger-dark: #dc2626;      // 深版（增加暗调）
 
+// ==============================
+// 3. 浅色模式 - 中性色系统重构
+// ==============================
+// 背景色（采用更平滑的灰度过渡）
+@project-bg-color: #ffffff;          // 保留纯白（最高可读性）
+@project-bg-secondary: #f8fafc;      // 次要背景（改为更冷的浅灰）
+@project-bg-tertiary: #f1f5f9;      // 三级背景（与次级形成明显层级）
 
+// 文本色（重构对比度系统）
+@project-text-primary: #1e293b;      // 主文本（蓝黑调，减轻纯黑压迫感）
+@project-text-secondary: #475569;    // 次文本（确保4.5:1对比度）
+@project-text-tertiary: #64748b;     // 三级文本（仍保持可读性）
+@project-text-disabled: #cbd5e1;     // 禁用状态（明确不可交互性）
+
+// 边框色（更精细的视觉分割）
+@project-border-color: #e2e8f0;      // 普通边框（与背景更和谐）
+@project-border-dark: #cbd5e1;       // 强调边框（增加对比度但不过度）
+
+// ==============================
+// 4. 深色模式 - 专业级暗色方案
+// ==============================
+// 主色调（保持与浅色模式的色相一致性）
+@project-primary-dark-color: #8b5cf6;  // 主色（与浅色模式统一，亮度提升10%）
+@project-primary-dark-light: #9a76f7;  // 悬停色（确保与白色文本4:1对比度）
+@project-primary-dark-dark: #7c3aed;   // 激活色（保持足够深度）
+
+// 背景色（OLED优化 + 层级增强）
+@project-bg-dark-color: #0a0a0a;       // 主背景（纯黑，节省OLED能耗）
+@project-bg-dark-secondary: #181818;   // 次要背景（8%亮度提升）
+@project-bg-dark-tertiary: #252525;    // 三级背景（15%亮度提升）
+
+// 文本色（动态对比度系统）
+@project-text-dark-primary: #c5b0f7;    // 主文本（纯白，最高对比度）
+@project-text-dark-secondary: #e5e7eb;  // 次文本（轻微暖调减少眼疲劳）
+@project-text-dark-tertiary: #9ca3af;   // 三级文本（仍保持AA标准）
+@project-text-dark-disabled: #475569;   // 禁用状态（可见但明确不可操作）
+
+// 边框色（深度感知设计）
+@project-border-dark-color:  #5b21b6;       // 普通边框（融入背景但可识别）
+@project-border-dark-dark:  #4f46e5;     // 强调边框（用于悬浮/聚焦状态）

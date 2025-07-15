@@ -1,13 +1,11 @@
 <!-- pages/index.vue -->
 <template>
   <div>
-   <change-theme></change-theme>
-    <language-switcher></language-switcher>
-
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
   </div>
 </template>
 
-<script setup>
-import ChangeTheme from '~/components/changeTheme.vue';
-
+<script setup lang="ts">
 </script>

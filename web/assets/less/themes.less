@@ -1,30 +1,81 @@
 @import "./variables.less";
 
+// ------------------------------
+// 浅色模式：完整颜色变量注册
+// ------------------------------
 .theme-light() {
+  // 主色调（全层级）
   --primary-color: @project-primary-color;
   --primary-light: @project-primary-light;
+  --primary-lighter: @project-primary-lighter; // 新增：超浅主色
   --primary-dark: @project-primary-dark;
+  --primary-darker: @project-primary-darker; // 新增：超深主色
+
+  // 背景色（分层级）
   --bg-color: @project-bg-color;
+  --bg-secondary: @project-bg-secondary; // 新增：次要背景
+  --bg-tertiary: @project-bg-tertiary; // 新增：三级背景（输入框等）
+
+  // 文本色（全层级）
   --text-primary: @project-text-primary;
-  --success-color: @project-success-color;
-  --warning-color: @project-warning-color;
-  --danger-color: @project-danger-color;
   --text-secondary: @project-text-secondary;
+  --text-tertiary: @project-text-tertiary; // 新增：三级文本（辅助信息）
+  --text-disabled: @project-text-disabled; // 新增：禁用文本
+
+  // 功能色（全状态）
+  --success-color: @project-success-color;
+  --success-light: @project-success-light; // 新增：成功色浅版
+  --success-dark: @project-success-dark; // 新增：成功色深版
+  --warning-color: @project-warning-color;
+  --warning-light: @project-warning-light; // 新增：警告色浅版
+  --warning-dark: @project-warning-dark; // 新增：警告色深版
+  --danger-color: @project-danger-color;
+  --danger-light: @project-danger-light; // 新增：危险色浅版
+  --danger-dark: @project-danger-dark; // 新增：危险色深版
+
+  // 边框色（分层级）
   --border-color: @project-border-color;
+  --border-dark: @project-border-dark; // 新增：强调边框
 }
 
+// ------------------------------
+// 深色模式：完整颜色变量注册（与浅色模式一一对应）
+// ------------------------------
 .theme-dark() {
+  // 主色调（全层级）
   --primary-color: @project-primary-dark-color;
   --primary-light: @project-primary-dark-light;
-  --primary-dark: @project-primary-dark-dark; 
+  --primary-lighter: lighten(@project-primary-dark-color, 20%); // 新增：超浅主色（动态计算）
+  --primary-dark: @project-primary-dark-dark;
+  --primary-darker: darken(@project-primary-dark-color, 15%); // 新增：超深主色（动态计算）
+
+  // 背景色（分层级）
   --bg-color: @project-bg-dark-color;
-  --text-primary: @project-text-dark-primary; 
+  --bg-secondary: @project-bg-dark-secondary; // 新增：次要背景
+  --bg-tertiary: @project-bg-dark-tertiary; // 新增：三级背景
+
+  // 文本色（全层级）
+  --text-primary: @project-text-dark-primary;
+  --text-secondary: @project-text-dark-secondary;
+  --text-tertiary: @project-text-dark-tertiary; // 新增：三级文本
+  --text-disabled: @project-text-dark-disabled; // 新增：禁用文本
+
+  // 功能色（全状态，深色模式下调整亮度确保可见性）
   --success-color: lighten(@project-success-color, 15%);
+  --success-light: lighten(@project-success-light, 20%); // 新增：成功色浅版
+  --success-dark: @project-success-color; // 新增：成功色深版（原色，避免过亮）
   --warning-color: lighten(@project-warning-color, 15%);
+  --warning-light: lighten(@project-warning-light, 20%); // 新增：警告色浅版
+  --warning-dark: @project-warning-color; // 新增：警告色深版
   --danger-color: lighten(@project-danger-color, 15%);
-  --text-secondary: lighten(@project-text-secondary, 40%);
-  --border-color: darken(@project-border-color, 50%);
+  --danger-light: lighten(@project-danger-light, 20%); // 新增：危险色浅版
+  --danger-dark: @project-danger-color; // 新增：危险色深版
+
+  // 边框色（分层级）
+  --border-color: @project-border-dark-color;
+  --border-dark: @project-border-dark-dark; // 新增：强调边框
 }
+
 
 // 初始化默认主题
 :root {

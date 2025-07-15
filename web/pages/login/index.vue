@@ -53,6 +53,9 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+definePageMeta({
+  layout:false,
+})
 // 响应式状态管理
 const isTxr = ref(false);      // 控制切换方向的类
 const isHidden = ref(false);   // 控制表单显示隐藏

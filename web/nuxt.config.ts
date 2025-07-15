@@ -45,16 +45,11 @@ export default defineNuxtConfig({
   vite:{
     css:{
        preprocessorOptions: {
-        less: {
-          // 全局注入 Less 变量（无需每个文件手动导入）
-          additionalData: `@import "@/assets/less/variables.less"; @import "@/assets/less/antd-variables.less";`,
-          // 允许 Less 中使用 JavaScript（如需动态计算）
-          javascriptEnabled: true,
-          modifyVars: {
-            hack: `true; @import "@/assets/less/antd-variables.less";`,
-            javascriptEnabled: true
-          }
-        }
+         less: {
+        // 关键：使用 hack 语法确保自定义变量优先加载
+        modifyVars: {},
+        javascriptEnabled: true
+      }
       }
     },
     plugins: [
