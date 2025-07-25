@@ -9,7 +9,9 @@ import (
 )
 
 func Migrate(db *gorm.DB) error {
-	err := db.AutoMigrate(&systemModel.User{})
+	err := db.AutoMigrate(&systemModel.User{}, &systemModel.SysDept{}, &systemModel.SysJob{}, &systemModel.SysMenu{},
+		&systemModel.SysPermissions{}, &systemModel.SysRole{}, &systemModel.SysRoleMenu{}, &systemModel.SysRolePermissions{},
+		&systemModel.SysUserJob{}, &systemModel.SysUserRole{})
 	if err != nil {
 		return err
 	}

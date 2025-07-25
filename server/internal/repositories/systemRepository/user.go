@@ -19,7 +19,7 @@ func (repository *UserRepository) CreateUserInfo(ctx context.Context, user *syst
 }
 
 func (repository *UserRepository) GetUserInfoByUserName(ctx context.Context, user *systemModel.User) (userInfo systemModel.User, err error) {
-	err = repository.db.WithContext(ctx).Where("user_name = ?", user.UserName).First(&userInfo).Error
+	err = repository.db.WithContext(ctx).Where("user_name = ?", user.UserName).Debug().First(&userInfo).Error
 	return
 	//if err != nil {
 	//	return false, err

@@ -1,11 +1,12 @@
 import type { FetchError } from 'ofetch'
 import { message } from 'ant-design-vue';
 import type { ApiParams, resType } from '~/types/api'
+import type { UseFetchOptions } from 'nuxt/app'
 
 export function useApiFetch<T = any>(params: ApiParams) {
   const config = useRuntimeConfig()
   const baseURL = params.baseURL || config.public.apiBase
-  
+
   var fullUrl = baseURL + params.url
   if (params.params) {
    const searchParams = new URLSearchParams();
@@ -29,9 +30,10 @@ export function useApiFetch<T = any>(params: ApiParams) {
   const onResponse = (ctx: { response: { _data: resType<T>,status: number } }) => {
     const { _data,status } = ctx.response;
     
-
     if (status >= 200 && status < 300) {
       if (_data.code !== 0) {
+        console.log('发起请求:', fullUrl, '触发时间:', new Date().toISOString(), '请求体:', params.data);
+        console.log('onResponse函数被调用，来源:', new Error().stack); // 打印调用栈
         message.warning(_data.msg || '请求失败');
       } else {
         message.success(_data.msg || '请求成功')
@@ -46,7 +48,7 @@ export function useApiFetch<T = any>(params: ApiParams) {
   };
 
   // 合并默认选项，使用更精确的类型
-  const fetchOptions = {
+  const fetchOptions: UseFetchOptions<resType<T>> = {
     method: params.method,
     headers: {
       'Content-Type': 'application/json',
@@ -55,10 +57,11 @@ export function useApiFetch<T = any>(params: ApiParams) {
     body: params.data,
     timeout: params.timeout || 60000,
     responseType: params.responseType || 'json',
+    watch:false,
     onResponseError,
     onResponse
   }
-  
+
   // 使用resType<T>作为返回类型
   return useFetch<resType<T>>(fullUrl.toString(), fetchOptions)
 }

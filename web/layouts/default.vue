@@ -24,12 +24,12 @@
                 subnav 1
               </span>
             </template>
-            <a-menu-item key="1">option1</a-menu-item>
-            <a-menu-item key="2">option2</a-menu-item>
+            <a-menu-item key="1" @click="clickChangeRoute">option1</a-menu-item>
+            <a-menu-item key="2" @click="$router.back()">option2</a-menu-item>
             <a-menu-item key="3">option3</a-menu-item>
             <a-menu-item key="4">option4</a-menu-item>
           </a-sub-menu>
-          <a-sub-menu key="sub2">
+          <!-- <a-sub-menu key="sub2">
             <template #title>
               <span>
                 <laptop-outlined />
@@ -52,7 +52,7 @@
             <a-menu-item key="10">option10</a-menu-item>
             <a-menu-item key="11">option11</a-menu-item>
             <a-menu-item key="12">option12</a-menu-item>
-          </a-sub-menu>
+          </a-sub-menu> -->
         </a-menu>
       </a-layout-sider>
       <a-layout class="pt-0 px-6 pb-6"  :style="{ backgroundColor: themeCom?.themeVars.colorBgContainer }">
@@ -64,7 +64,8 @@
         <a-layout-content
           class="p-6 m-0 min-h-[280px]"
         >
-        <slot />
+        <!-- <slot /> -->
+         <NuxtPage />
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -75,6 +76,7 @@
 import { ref } from 'vue';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue';
 import ChangeTheme from '~/components/changeTheme.vue';
+import { NuxtPage } from '#components';
 const selectedKeys1 = ref<string[]>(['2']);
 const selectedKeys2 = ref<string[]>(['1']);
 const openKeys = ref<string[]>(['sub1']);
@@ -82,6 +84,13 @@ const openKeys = ref<string[]>(['sub1']);
 const themeCom = ref<InstanceType<typeof ChangeTheme> | null>(null)
 
 
+
+const router = useRouter()
+
+
+const clickChangeRoute = () => {
+  router.push({"path":"/test"})
+}
 
 </script>
 <style scoped>
